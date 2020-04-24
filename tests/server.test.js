@@ -36,13 +36,13 @@ const expectStatus = (expected, res, method) => {
   switch (res.status) {
     case STATUS_SERVER_ERROR:
       throw new Error(
-        `Your server threw an error during ${method} ${PATH} (status code ` +
-        '500); scroll up to see the expection and backtrace'
+        `El servidor arrojó un error durante la ejecución del request ${method} ${PATH} (status code ` +
+        '500)'
       );
 
     case STATUS_NOT_FOUND:
       throw new Error(
-        `You haven't implemented a handler for ${method} ${PATH} (status ` +
+        `El handler para el request ${method} ${PATH} no se encuentra implementado (status ` +
         'code 404)'
       );
 
@@ -113,12 +113,12 @@ describe('Request', () => {
   });
 
   describe(`${METHOD_GET} ${PATH}`, () => {
-    it('retrieves the list of posts', () => {
+    it('Obtiene el listado de Posts', () => {
       return req(METHOD_GET, STATUS_OK)
         .then(posts => expect(posts).to.have.length(0));
     });
 
-    it('filters the post by title if a search term if given', () => {
+    it('Filtra los Posts por `title` si el parámetro `term` existe', () => {
       const posts = [
         { title: 'first title', contents: 'contents' },
         { title: 'second', contents: 'contents' },
@@ -134,7 +134,7 @@ describe('Request', () => {
         });
     });
 
-    it('filters the post by contents if a search term if given', () => {
+    it('Filtra los Posts por `contents` si el parámetro `term` existe', () => {
       const posts = [
         { title: 'title', contents: 'hi there' },
         { title: 'title', contents: 'hello' },
@@ -151,7 +151,7 @@ describe('Request', () => {
   });
 
   describe(`${METHOD_POST} ${PATH}`, () => {
-    it('adds a post', () => {
+    it('Agrega un nuevo Post', () => {
       const post = { title: 'first title', contents: 'first contents' };
       return addPost(post)
         .then(() => req(METHOD_GET, STATUS_OK))
@@ -161,17 +161,17 @@ describe('Request', () => {
         });
     });
 
-    it('reports a missing title', () => {
+    it('Informa que falta el parámetro `title`', () => {
       return req(METHOD_POST, STATUS_USER_ERROR, { contents: 'contents' });
     });
 
-    it('reports missing contents', () => {
+    it('Informa que falta el parámetro `contents`', () => {
       return req(METHOD_POST, STATUS_USER_ERROR, { title: 'title' });
     });
   });
 
   describe(`${METHOD_PUT} ${PATH}`, () => {
-    it('updates a post', () => {
+    it('Actualiza un Post existente', () => {
       const post1 = { title: 'first title', contents: 'first contents' };
       const post2 = { title: 'second title', contents: 'second contents' };
       const updates = { title: 'new title', contents: 'new contents' };
@@ -193,17 +193,17 @@ describe('Request', () => {
         });
     });
 
-    it('reports a missing id', () => {
+    it('Informa que falta el parámetro `id`', () => {
       const body = { title: 'new title', contents: 'new contents' };
       return req(METHOD_PUT, STATUS_USER_ERROR, body);
     });
 
-    it('reports a bad id', () => {
+    it('Informa que el `id` indicado no corresponde con un Post existente', () => {
       const body = { id: 1, title: 'new title', contents: 'new contents' };
       return req(METHOD_PUT, STATUS_USER_ERROR, body);
     });
 
-    it('reports a missing title', () => {
+    it('Informa que falta el parámetro `title`', () => {
       return addPost({ title: 'title', contents: 'contents' })
         .then((post) => {
           const body = { id: post.id, contents: 'new contents' };
@@ -211,7 +211,7 @@ describe('Request', () => {
         });
     });
 
-    it('reports missing contents', () => {
+    it('Informa que falta el parámetro `contents`', () => {
       return addPost({ title: 'title', contents: 'contents' })
         .then((post) => {
           const body = { id: post.id, title: 'new title' };
@@ -221,7 +221,7 @@ describe('Request', () => {
   });
 
   describe(`${METHOD_DELETE} ${PATH}`, () => {
-    it('deletes a post', () => {
+    it('Elimina un Post existente', () => {
       const post1 = { title: 'first title', contents: 'first contents' };
       const post2 = { title: 'second title', contents: 'second contents' };
 
@@ -240,11 +240,11 @@ describe('Request', () => {
         });
     });
 
-    it('reports a missing id', () => {
+    it('Informa que falta el parámetro `id`', () => {
       return req(METHOD_DELETE, STATUS_USER_ERROR);
     });
 
-    it('reports a bad id', () => {
+    it('Informa que el `id` indicado no corresponde con un Post existente', () => {
       return req(METHOD_DELETE, STATUS_USER_ERROR, { id: 1 });
     });
   });

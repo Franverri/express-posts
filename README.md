@@ -1,1 +1,77 @@
-# express-posts
+# Express Posts Homework
+
+## Descripción
+
+En esta homework vamos a desarrollar una API que nos permitirá gestionar Posts (entendiendo como tal a una publicación similar a las que hacemos en las redes sociales) y realizar las siguientes acciones:
+
+* Consultar Posts existentes
+* Crear nuevos Posts
+* Actualizar Posts existentes
+* Eliminar Posts existentes
+
+Por lo que estaríamos construyendo algo similar a lo que sería un gestor de publicaciones de cualquiera de las redes sociales que conocemos
+
+## Configuración inicial
+
+1. Ejecutar `npm install` desde la carpeta "xxxxx"
+2. Ejecutar `npm test` para correr los tests
+3. En el caso de no tener instalado `nodemon`, instalarlo ejecutando el siguiente comando `npm install -g nodemon`
+4. Ejecutar `nodemon src/app.js` para que el servidor quede corriendo en nuestra computadora y automáticamente se restartee si realizamos algún cambio
+5. Ya se encuentra todo configurado, podremos hacer requests a `http://localhost:3000` que es donde estará corriendo nuestro servidor. (Para ver cómo realizar request ver el apartado `Postman`)
+
+## Instrucciones
+
+Como se mencionó anteriormente debemos generar una API para gestionar Posts, los mismos serán almacenados en memoria utilizando un array de JavaScript denominado `posts` para evitar tener que trabajar con una base de datos.
+
+Cada `Post` va a ser un objeto con la siguiente estructura:
+
+```js
+{
+  title: "Titulo del Post",
+  contents: "Contenido del Post"
+}
+```
+Tanto `title` como `contents` van a ser del tipo String.
+
+Desarrollar las siguientes cinco rutas dentro del archivo `server.js` de la carpeta `src`
+
+### `GET /posts`
+
+Cuando se ejecute un request del tipo `GET` en la ruta `/posts`:
+
+- Si existe el parámetro `term` dentro de la URL (query-string parameter) devolver aquellos Posts que contengan el valor del parámetro `term` en su título o en su contendo (o en ambos).
+
+- Caso contrario, devolver todos los Posts que se encuentren almacenados en el array `posts`.
+
+Por ejemplo: TO-DO
+
+La respuesta se brindará en formato JSON: TO-DO
+
+
+### `POST /posts`
+
+Cuando se ejecute un request del tipo `POST` en la ruta `/posts`:
+
+- Asegurarse que dentro del body del request existan tanto `title` como `contents`. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para crear el Post"}`. Verificar que el código de error sea el adecuado.
+
+- Si ambos cambos fueron provistos, crear un nuevo objeto Post con los valores indicados para `title` y `contents` y asignándole un valor numérico único como propiedad `id`. Agregar dicho objeto al array de posts. Devolver un JSON con el objeto recientemente creado.
+
+Ej: TO-DO
+
+### `PUT /posts`
+
+Cuando se ejecute un request del tipo `PUT` en la ruta `/posts`
+
+- Asegurarse que dentro del body del request existan `id`, `title` y `contents`. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para modificar el Post"}`. Verificar que el código de error sea el adecuado.
+
+- En el caso de que el `id` no corresponda a un post válido existente, devolver un JSON similar al anterior modificando el mensaje de error por uno adecuado para este caso.
+
+- Si se encuentran todos los parámetros y el `id` es válido, actualizar los datos del `title` y `contents` del Post que coincida con dicho `id` . Devolver un JSON con el objeto recientemente actualizado.
+
+### `DELETE /posts`
+
+Cuando se ejecute un request del tipo `DELETE` en la ruta `posts`
+
+- Asegurarse que dentro del boby del request exista un `id` correspondiente a un Post válido. De no ser así, ya sea por falta del campo `id` o por ser un id inválido, devolver un JSON con un objeto con un mensaje correspondiente en cada caso manteniendo la forma de siempre: `{error: "Mensaje de error"}`
+
+- En el caso de que el `id` corresponda a un Post válido, eliminarlo del array de Posts y devolver un JSON con el siguiente objeto: `{ success: true }`.
