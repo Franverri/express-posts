@@ -15,9 +15,8 @@ Por lo que estaríamos construyendo algo similar a lo que sería un gestor de pu
 
 1. Ejecutar `npm install` desde la carpeta "xxxxx"
 2. Ejecutar `npm test` para correr los tests
-3. En el caso de no tener instalado `nodemon`, instalarlo ejecutando el siguiente comando `npm install -g nodemon`
-4. Ejecutar `nodemon src/app.js` para que el servidor quede corriendo en nuestra computadora y automáticamente se restartee si realizamos algún cambio
-5. Ya se encuentra todo configurado, podremos hacer requests a `http://localhost:3000` que es donde estará corriendo nuestro servidor. (Para ver cómo realizar request ver el apartado `Postman` al final de este documento)
+3. Ejecutar `npm run nodemon` para que el servidor quede corriendo en nuestra computadora y automáticamente se restartee si realizamos algún cambio
+4. Ya se encuentra todo configurado, podremos hacer requests a `http://localhost:3000` que es donde estará corriendo nuestro servidor. (Para ver cómo realizar request ver el apartado `Postman` al final de este documento)
 
 ## Instrucciones
 
