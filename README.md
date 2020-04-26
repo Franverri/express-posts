@@ -84,8 +84,31 @@ Una vez instalado podrán acceder a la siguiente pantalla principal de Postman:
   <img src="./img/pantalla-inicial.png" alt="Img" />
 </p>
 
-1. Crear una nueva `Collection` para agrupar allí todos los request que vayamos a hacer para este proyecto. Para eso clickear en el botón `New` y luego seleccionar
+1. Crear una nueva `Collection` para agrupar allí todos los request que vayamos a hacer para este proyecto. Para eso clickear en el botón `New`, luego seleccionar `Collection` y darle un nombre a la misma.
 
 <p align="center">
   <img src="./img/new-collection.png" alt="Img" />
 </p>
+
+2. Crear un nuevo `Request`, darle un nombre y seleccionar la colección creada anteriormente para agrupar todos los Request allí
+
+<p align="center">
+  <img src="./img/new-request.png" alt="Img" />
+</p>
+
+3. Ahora en la parte del recuadro rojo tendremos que
+
+- Indicar que tipo de Request queremos:
+
+    * GET
+    * POST
+    * PUT
+    * DELETE
+
+  - La URL sobre la cual vamos a realizar el request (En este caso será http://localhost:3000/)
+
+  - Incluir los `Params` o el `Body` dependiendo del tipo de Request que hagamos
+
+  <p align="center">
+    <img src="./img/request-general.png" alt="Img" />
+  </p>
