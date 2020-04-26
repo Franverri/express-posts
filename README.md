@@ -112,3 +112,9 @@ Una vez instalado podrán acceder a la siguiente pantalla principal de Postman:
   <p align="center">
     <img src="./img/request-general.png" alt="Img" />
   </p>
+
+Video demostrativo de cómo se utiliza y funcionan algunos request básicos de Postman:
+
+  <p align="center">
+    <img src="./img/video-request.gif" alt="Img" />
+  </p>
