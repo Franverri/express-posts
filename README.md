@@ -105,9 +105,9 @@ Una vez instalado podrán acceder a la siguiente pantalla principal de Postman:
     * PUT
     * DELETE
 
-  - La URL sobre la cual vamos a realizar el request (En este caso será http://localhost:3000/)
+- La URL sobre la cual vamos a realizar el request (En este caso será http://localhost:3000/)
 
-  - Incluir los `Params` o el `Body` dependiendo del tipo de Request que hagamos
+- Incluir los `Params` o el `Body` dependiendo del tipo de Request que hagamos
 
   <p align="center">
     <img src="./img/request-general.png" alt="Img" />
